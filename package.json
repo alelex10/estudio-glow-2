@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "ecommerce-monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "yarn workspace web dev",
+    "dev:api": "yarn workspace api dev",
+    "dev": "concurrently \"yarn dev:api\" \"yarn dev:web\"",
+    "build:shared": "yarn workspace @ecommerce/shared build",
+    "build:web": "yarn workspace web build",
+    "build": "yarn build:shared && yarn build:web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
