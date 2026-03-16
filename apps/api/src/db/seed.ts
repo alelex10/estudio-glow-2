@@ -3,6 +3,7 @@ import { users, products } from "./schema.js";
 import bcrypt from "bcryptjs";
 
 async function seed() {
+  console.log("🌱 Seeding database...");
 
   // Create admin user
   const hashedPassword = await bcrypt.hash("admin123", 10);
@@ -106,6 +107,9 @@ async function seed() {
     await db.insert(products).values(product).onConflictDoNothing();
   }
 
+  console.log("✅ Seed completado!");
+  console.log("   Admin: admin@tienda.com / admin123");
+  console.log("   User:  user@tienda.com / user123");
   process.exit(0);
 }
 

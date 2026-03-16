@@ -28,11 +28,17 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
 // Serve React build in production
-const clientBuildPath = path.join(__dirname, "../../web/dist");
+// Docker: WEB_DIST_PATH=/app/apps/web/dist
+// Dev:    path relativo desde apps/api/dist/server.js → ../../web/dist
+const clientBuildPath =
+  process.env.WEB_DIST_PATH ||
+  path.join(__dirname, "../../web/dist");
+
 app.use(express.static(clientBuildPath));
 app.get("*", (_req, res) => {
   res.sendFile(path.join(clientBuildPath, "index.html"));
 });
 
 app.listen(PORT, () => {
+  console.log(`🚀 API running on http://localhost:${PORT}`);
 });

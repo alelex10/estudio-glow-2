@@ -1,0 +1,45 @@
+# Dependencias instaladas
+node_modules
+**/node_modules
+
+# Builds previos
+dist
+**/dist
+
+# Control de versiones
+.git
+.gitignore
+.gitattributes
+
+# Variables de entorno con secrets
+.env
+**/.env
+
+# Editores y herramientas
+.vscode
+.idea
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Base de datos local
+apps/api/data
+**/*.sqlite
+
+# Tests y cobertura
+coverage
+**/__tests__
+**/*.test.ts
+**/*.spec.ts
+
+# Archivos temporales
+.DS_Store
+Thumbs.db
+
+# Drizzle migrations (se regeneran)
+apps/api/drizzle
